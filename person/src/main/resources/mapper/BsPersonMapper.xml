@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.person.mapper.BsPersonMapper" >
+    <select id="findByName" resultType="BsPerson">
+          SELECT * FROM bs_person ${ew.customSqlSegment}
+    </select>
+    <select id="findByEnNameMybaties" resultType="BsPerson" parameterType="BsPerson">
+        SELECT * FROM bs_person where en_name = #{enName}
+    </select>
+
+    <select id="selectPageVo" resultType="BsPerson">
+        SELECT * FROM bs_person ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPageVoMybaties" resultType="BsPerson" parameterType="BsPerson">
+        SELECT * FROM bs_person where user_name = #{bsPerson.userName}
+    </select>
+</mapper>

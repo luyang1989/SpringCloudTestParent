@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <!--被依赖父项目-->
+    <parent>
+        <groupId>SpringCloudTest</groupId>
+        <artifactId>SpringCloudTestParent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+	<groupId>com.example</groupId>
+	<artifactId>person</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>person</name>
+	<description>Demo project for Spring Boot</description>
+    <dependencies>
+        <!--被依赖base项目-->
+        <dependency>
+            <groupId>com.example.base</groupId>
+            <artifactId>base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--mp基础base代码，必须放在单个module中-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <!--数据库连接池，必须放在单个module中-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.11</version>
+        </dependency>
+    </dependencies>
+</project>
