@@ -19,7 +19,7 @@ import java.util.List;
 
 @EnableEurekaClient
 @RestController
-public class PersonController {
+public class PersonController extends BaseController{
 
     @Autowired
     public BsPersonService bsPersonService;
@@ -71,13 +71,14 @@ public class PersonController {
     /**
      * 例子4
      * 使用mp分分页
-     * @param name
+     * @param current
      * @return
      */
     @RequestMapping("/test4")
-    public String test4(@RequestParam(value = "name", defaultValue = "forezp") String name) {
-        Page<BsPerson> bsPersonPage = new Page<BsPerson>(1,2);
-        return bsPersonService.page(bsPersonPage).getRecords().toString();
+    public Object test4(@RequestParam(value = "current", defaultValue = "1") int current,
+                        @RequestParam(value = "size", defaultValue = "10") int size) {
+        Page<BsPerson> bsPersonPage = new Page<BsPerson>(current,size);
+        return buildSuccessResult(bsPersonService.page(bsPersonPage).getRecords().toString());
     }
     /**
      * 例子5

@@ -22,7 +22,6 @@
         <module>server</module>
         <module>person</module>
         <module>entry</module>
-        <module>zuul</module>
     </modules>
     <!--全局pom文件配置-->
     <properties>
