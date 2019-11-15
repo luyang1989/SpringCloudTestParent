@@ -7,19 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
-    /**
-     * 验证登录service
-     * @param user_name
-     * @param pass_word
-     * @return
-     */
-    public int doLogin(String user_name,String pass_word){
-        if(!StringUtils.isNotBlank(user_name)){
-            return NumConstant.ONE;
-        }
-        if(!StringUtils.isNotBlank(pass_word)){
-            return NumConstant.TWO;
-        }
-        return NumConstant.THREE;
-    }
+
 }

@@ -37,6 +37,14 @@ public class BaseController {
     protected Object buildSuccessResult(Object result) {
         return buildResult(HttpResultCodeEnum.SUCCESS.getValue(),result,null);
     }
+    /**
+     * 登录成功返回
+     * @param result
+     * @return
+     */
+    protected Object buildLoginSuccessResult(String sid,Object result) {
+        return buildResult(HttpResultCodeEnum.SUCCESS.getValue(),result,sid);
+    }
 
     /**
      * 成功返回

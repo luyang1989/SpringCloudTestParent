@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: zuul
+  redis:
+    host: 10.0.41.102:6379
+    password: 123qwe
 eureka:
   client:
     service-url:
