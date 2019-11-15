@@ -6,12 +6,6 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <content url="file://F:/SpringCloudTestParent">
-      <sourceFolder url="file://F:/SpringCloudTestParent/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://F:/SpringCloudTestParent/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://F:/SpringCloudTestParent/src/test/java" isTestSource="true" />
-      <excludeFolder url="file://F:/SpringCloudTestParent/target" />
-    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.0.3.RELEASE" level="project" />
