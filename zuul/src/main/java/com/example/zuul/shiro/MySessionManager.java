@@ -10,7 +10,7 @@ import javax.servlet.ServletResponse;
 import java.io.Serializable;
 
 public class MySessionManager extends DefaultWebSessionManager{
-
+    
 
     @Override
     public Serializable getSessionId(ServletRequest servletRequest, ServletResponse servletResponse) {

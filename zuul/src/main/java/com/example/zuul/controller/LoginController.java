@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class LoginController extends BaseController{
 
@@ -37,10 +41,38 @@ public class LoginController extends BaseController{
         }
         if (subject.isAuthenticated()) {
             String sid = (String) subject.getSession().getId();
+//            String s = (String) SecurityUtils.getSubject().getPrincipal();
             return buildLoginSuccessResult(sid,"登录成功");
         } else {
             token.clear();
             return buildResult(HttpResultCodeEnum.ERROR.getValue(),"登录失败","登录失败");
+        }
+    }
+
+
+    /**
+     * 未登录
+     * @return
+     */
+    @RequestMapping(value = "/unlisted", method = RequestMethod.GET)
+    @ResponseBody
+    public Object unlisted() {
+        return buildResult(HttpResultCodeEnum.UNLISTED.getValue(),"未登录","未登录");
+    }
+
+    /**
+     * 退出
+     * @return
+     */
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @ResponseBody
+    public Object logout() {
+        Subject subject = SecurityUtils.getSubject();
+        if (subject.isAuthenticated()) {
+            subject.logout(); // session 会销毁，在SessionListener监听session销毁，清理权限缓存
+            return buildLogoutResult("退出成功");
+        }else{
+            return buildResult(HttpResultCodeEnum.UNLISTED.getValue(),"未登录","未登录");
         }
     }
 

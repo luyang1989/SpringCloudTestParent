@@ -70,7 +70,9 @@ public class ShiroConfiguration {
         //拦截器.
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
         Map<String, Filter> filtersMap = new LinkedHashMap<String, Filter>();
+        shiroFilterFactoryBean.setLoginUrl("/unlisted");
         filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/logout", "anon");
         filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilters(filtersMap);
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
