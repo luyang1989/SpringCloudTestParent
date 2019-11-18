@@ -74,7 +74,7 @@ public class PersonController extends BaseController{
      * @param current
      * @return
      */
-    @RequestMapping("/test4")
+    @RequestMapping("/getAllPerson")
     public Object test4(@RequestParam(value = "current", defaultValue = "1") int current,
                         @RequestParam(value = "size", defaultValue = "10") int size) {
         Page<BsPerson> bsPersonPage = new Page<BsPerson>(current,size);
