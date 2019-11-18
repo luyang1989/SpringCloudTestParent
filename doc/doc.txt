@@ -6,7 +6,7 @@ base项目为基础module，放置所有bean和公用的方法以及公用的yml
 使用logback做日志文件输出
 使用Druid做数据库连接池
 mybaties-plus参考文档：https://mp.baomidou.com/guide/
-使用shiro和redis做权限控制(共享session)
+使用shiro和redis做权限控制(共享session方式，不建议采用jwt)
 使用zuul做网关
 文件上传下载使用FastDFS
 部署：zuul项目开放唯一外网端口，其他项目均使用内网ip，项目之间互相调用使用内网ip，zuul项目为唯一对外暴露项目
