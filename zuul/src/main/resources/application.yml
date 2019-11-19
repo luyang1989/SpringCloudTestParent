@@ -16,5 +16,8 @@ zuul:
   routes:
     service-person: /person/**
   ignored-services: '*'
+  host:
+    connect-timeout-millis: 15000
+    socket-timeout-millis: 60000
 
 

@@ -17,7 +17,7 @@ import java.util.Map;
 public class LoginController extends BaseController{
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     @ResponseBody
     public Object login(@RequestParam("username") String username, @RequestParam("password") String password) {
 
