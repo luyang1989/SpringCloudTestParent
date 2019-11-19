@@ -8,7 +8,8 @@ base项目为基础module，放置所有bean和公用的方法以及公用的yml
 mybaties-plus参考文档：https://mp.baomidou.com/guide/
 使用shiro和redis做权限控制(共享session方式，不建议采用jwt)
 使用zuul做网关
-文件上传下载使用FastDFS
+文件上传下载使用FastDFSClient
+文件系统使用FastDfs+nginx
 部署：zuul项目开放唯一外网端口，其他项目均使用内网ip，项目之间互相调用使用内网ip，zuul项目为唯一对外暴露项目
 安装相关插件
     安装方法：打开 IDEA，进入 File -> Settings -> Plugins -> Browse Repositories，输入 mybatisx 搜索并安装。可以在xml中提示sql书写
