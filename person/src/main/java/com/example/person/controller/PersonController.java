@@ -1,6 +1,10 @@
 package com.example.person.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.base.sys.config.HttpResultCodeEnum;
@@ -17,6 +21,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -30,6 +35,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @EnableEurekaClient
 @RestController
@@ -90,11 +96,12 @@ public class PersonController extends BaseController{
      * @param current
      * @return
      */
-    @RequestMapping("/getAllPerson")
+    @RequestMapping(value = "/getAllPerson",method = RequestMethod.POST)
     public Object getAllPerson(@RequestParam(value = "current", defaultValue = "1") int current,
                         @RequestParam(value = "size", defaultValue = "10") int size) {
         Page<BsPerson> bsPersonPage = new Page<BsPerson>(current,size);
-        return buildSuccessResult(bsPersonService.page(bsPersonPage).getRecords().toString());
+        bsPersonPage = (Page<BsPerson>) bsPersonService.page(bsPersonPage);
+        return buildSuccessResult(bsPersonPage);
     }
     /**
      * 例子5
