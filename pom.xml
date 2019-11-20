@@ -23,6 +23,7 @@
         <module>person</module>
         <module>entry</module>
         <module>base</module>
+        <module>zuul</module>
     </modules>
     <!--全局pom文件配置-->
     <properties>
