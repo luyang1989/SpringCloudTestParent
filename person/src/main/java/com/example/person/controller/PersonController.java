@@ -61,10 +61,10 @@ public class PersonController extends BaseController{
      * @param name
      * @return
      */
-    @RequestMapping("/test1")
-    public String test1(@RequestParam(value = "name", defaultValue = "forezp") String name) {
-        BsPerson bsPerson = bsPersonService.getById(17656);
-        return bsPerson.toString();
+    @RequestMapping(value = "/getPersonDetail",method = RequestMethod.POST)
+    public Object getPersonDetail(@RequestParam(value = "id") String id) {
+        BsPerson bsPerson = bsPersonService.getById(id);
+        return buildSuccessResult(JSONObject.toJSON(bsPerson));
     }
     /**
      * 例子2

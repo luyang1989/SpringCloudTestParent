@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +26,7 @@ public class TenantController extends BaseController{
      * 获取租户列表
      * @return
      */
-    @RequestMapping("/getTidList")
+    @RequestMapping(value = "/getTidList",method = RequestMethod.POST)
     public Object getTidList(@RequestParam(value = "current", defaultValue = "1") int current,
                              @RequestParam(value = "size", defaultValue = "10") int size) {
         Page<SysTenant> sysTenantPage = new Page<SysTenant>(current,size);
