@@ -180,13 +180,13 @@ public class PersonController extends BaseController{
      * @throws IOException
      */
     @RequestMapping("/uploadFileToFast")
-    public String uoloadFileToFast(@RequestParam("file")MultipartFile file) throws IOException {
+    public Object uoloadFileToFast(@RequestParam("file")MultipartFile file) throws IOException {
         if(file.isEmpty()){
             LOGGER.info("文件不存在");
         }
         String path = fastDfsUtil.uploadFile(file);
         LOGGER.info("上传文件成功");
-        return buildResult(HttpResultCodeEnum.SUCCESS.getValue(),path,"上传成功").toString();
+        return buildResult(HttpResultCodeEnum.SUCCESS.getValue(),path,"上传成功");
     }
 
     /**
