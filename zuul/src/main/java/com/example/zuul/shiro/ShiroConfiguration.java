@@ -95,7 +95,7 @@ public class ShiroConfiguration {
     public CustomRealm customRealm() {
         CustomRealm customRealm = new CustomRealm();
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-        // 采用MD5方式加密
+        // 采用SHA方式加密
         hashedCredentialsMatcher.setHashAlgorithmName(Constant.HASH_ALGORITHM);
         // 设置加密次数
         hashedCredentialsMatcher.setHashIterations(Constant.HASH_INTERATIONS);
