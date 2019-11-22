@@ -7,6 +7,7 @@ base项目为基础module，放置所有bean和公用的方法以及公用的yml
 使用Druid做数据库连接池
 mybaties-plus参考文档：https://mp.baomidou.com/guide/
 使用shiro和redis做权限控制(共享session方式，不建议采用jwt)
+shiro加密采用SHA-1,加密次数为1024
 使用zuul做网关
 文件上传下载使用FastDFSClient
 文件系统使用FastDfs+nginx
