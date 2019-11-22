@@ -6,6 +6,12 @@ spring:
   redis:
     host: 10.0.41.102:6379
     password: 123qwe
+  datasource:
+      url: jdbc:mysql://10.0.41.102:3306/xiaowei_20190419?useSSL=false
+      username: man
+      password: qwe123
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
 eureka:
   client:
     service-url:

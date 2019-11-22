@@ -4,6 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 
+import com.example.base.sys.config.Constant;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -92,6 +94,12 @@ public class ShiroConfiguration {
     @Bean
     public CustomRealm customRealm() {
         CustomRealm customRealm = new CustomRealm();
+        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+        // 采用MD5方式加密
+        hashedCredentialsMatcher.setHashAlgorithmName(Constant.HASH_ALGORITHM);
+        // 设置加密次数
+        hashedCredentialsMatcher.setHashIterations(Constant.HASH_INTERATIONS);
+        customRealm.setCredentialsMatcher(hashedCredentialsMatcher);
         return customRealm;
     }
 
