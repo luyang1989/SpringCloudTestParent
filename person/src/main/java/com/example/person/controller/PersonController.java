@@ -39,6 +39,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.Wrapper;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -107,9 +108,14 @@ public class PersonController extends BaseController{
      */
     @RequestMapping(value = "/getAllPerson",method = RequestMethod.POST)
     public Object getAllPerson(@RequestParam(value = "current", defaultValue = "1") int current,
-                        @RequestParam(value = "size", defaultValue = "10") int size) {
+                                @RequestParam(value = "size", defaultValue = "10") int size,
+                                @RequestParam(value = "name") String name,
+                                @RequestParam(value = "tid") String tid) {
         Page<BsPerson> bsPersonPage = new Page<BsPerson>(current,size);
-        bsPersonPage = (Page<BsPerson>) bsPersonService.page(bsPersonPage);
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.like("user_name",name);
+        queryWrapper.eq("tid",tid);
+        bsPersonPage = (Page<BsPerson>) bsPersonService.page(bsPersonPage,queryWrapper);
         return buildSuccessResult(bsPersonPage);
     }
     /**
