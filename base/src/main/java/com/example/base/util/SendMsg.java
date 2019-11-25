@@ -16,11 +16,11 @@ import java.util.UUID;
 public class SendMsg {
 
 
-    public static final String MSG_URL = "Https://API.FESCO.com.cn/api/SendMessage/SendMessage";
-    public static final String APPSCRETKEY = "lvd65pcme3df20cv9c9r00ed951q4578";
-    public static final String APPACCOUNT = "SharingService";
-    public static final String ELECT_TYPE  = "UserRegister";
-    public static final String ELECT_SOURCE  = "SharingService";
+    public static final String MSG_URL = "";
+    public static final String APPSCRETKEY = "";
+    public static final String APPACCOUNT = "";
+    public static final String ELECT_TYPE  = "";
+    public static final String ELECT_SOURCE  = "";
 
 
     /**
