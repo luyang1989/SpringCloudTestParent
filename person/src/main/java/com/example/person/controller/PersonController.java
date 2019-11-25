@@ -110,11 +110,13 @@ public class PersonController extends BaseController{
     public Object getAllPerson(@RequestParam(value = "current", defaultValue = "1") int current,
                                 @RequestParam(value = "size", defaultValue = "10") int size,
                                 @RequestParam(value = "name") String name,
-                                @RequestParam(value = "tid") String tid) {
+                                @RequestParam(value = "tid") String tid,
+                                @RequestParam(value = "orgId") String orgId) {
         Page<BsPerson> bsPersonPage = new Page<BsPerson>(current,size);
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.like("user_name",name);
         queryWrapper.eq("tid",tid);
+        queryWrapper.eq("org_id",orgId);
         bsPersonPage = (Page<BsPerson>) bsPersonService.page(bsPersonPage,queryWrapper);
         return buildSuccessResult(bsPersonPage);
     }
