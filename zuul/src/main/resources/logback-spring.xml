@@ -170,7 +170,7 @@
         可以包含零个或多个元素，标识这个appender将会添加到这个logger。
     -->
     <!--开发环境:打印控制台-->
-    <logger name="com.example.person.mapper" level="DEBUG"/>
+    <logger name="com.example.zuul.mapper" level="DEBUG"/>
 
     <root level="INFO">
         <appender-ref ref="CONSOLE" />

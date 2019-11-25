@@ -8,6 +8,7 @@ import com.example.base.sys.entity.BsPerson;
 
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 使用mp的通用service接口
@@ -46,4 +47,7 @@ public interface BsPersonService extends IService<BsPerson>{
      * @return
      */
     public BsPerson getPersonById(BsPerson bsPerson);
+
+
+
 }

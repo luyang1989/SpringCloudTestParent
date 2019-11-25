@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 @SpringBootApplication(scanBasePackages = {"com.example"})
-@MapperScan("com.example.person.mapper")
+@MapperScan(value = "com.example.person.mapper,com.example.base.mapper")
 @Import(FdfsClientConfig.class)
 public class PersonApplication {
 

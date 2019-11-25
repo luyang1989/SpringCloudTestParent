@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 使用mp提供的通用service
@@ -69,4 +70,6 @@ public class BsPersonServiceImpl extends ServiceImpl<BsPersonMapper,BsPerson> im
     public BsPerson getPersonById(BsPerson bsPerson) {
         return bsPerson.selectById();
     }
+
+
 }

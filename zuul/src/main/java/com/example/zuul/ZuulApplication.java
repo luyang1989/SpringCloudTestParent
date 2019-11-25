@@ -5,8 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
-@SpringBootApplication
-@MapperScan("com.example.zuul.mapper")
+@SpringBootApplication(scanBasePackages = {"com.example"})
+@MapperScan(value = "com.example.zuul.mapper,com.example.base.mapper")
 @EnableZuulProxy
 public class ZuulApplication {
 

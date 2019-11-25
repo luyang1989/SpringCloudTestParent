@@ -7,11 +7,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.base.service.SysUploadService;
 import com.example.base.sys.config.HttpResultCodeEnum;
 import com.example.base.sys.entity.BsPerson;
+import com.example.base.sys.entity.SecUser;
+import com.example.base.sys.entity.SysUploadfile;
 import com.example.base.util.FastDfsUtil;
 import com.example.base.util.SendMsg;
 import com.example.person.service.BsPersonService;
+import com.example.person.service.SecUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +36,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
@@ -46,7 +51,9 @@ public class PersonController extends BaseController{
     @Autowired
     public BsPersonService bsPersonService;
     @Autowired
-    private FastDfsUtil fastDfsUtil;
+    private SysUploadService sysUploadService;
+    @Autowired
+    private SecUserService secUserService;
 
 //    测试从本项目的yml文件中获取参数
     @Value("${server.port}")
@@ -58,7 +65,7 @@ public class PersonController extends BaseController{
     /**
      * 例子1
      * 调用mp的service的基本方法
-     * @param name
+     * @param
      * @return
      */
     @RequestMapping(value = "/getPersonDetail",method = RequestMethod.POST)
@@ -174,19 +181,23 @@ public class PersonController extends BaseController{
 
 
     /**
-     * 上传文件
-     * @param file
+     * 上传头像
+     * @param multipartFile
      * @return
      * @throws IOException
      */
     @RequestMapping("/uploadFileToFast")
-    public Object uoloadFileToFast(@RequestParam("file")MultipartFile file) throws IOException {
-        if(file.isEmpty()){
+    public Object uoloadFileToFast(@RequestParam("file")MultipartFile multipartFile,@RequestParam("userId")String userId) throws IOException {
+        if(multipartFile.isEmpty()){
             LOGGER.info("文件不存在");
         }
-        String path = fastDfsUtil.uploadFile(file);
+        SysUploadfile sysUploadfile = sysUploadService.uploadFile(multipartFile,userId);
+        SecUser user = new SecUser();
+        user.setId(userId);
+        user.setFid(Integer.parseInt(sysUploadfile.getId()));
+        secUserService.updateById(user);
         LOGGER.info("上传文件成功");
-        return buildResult(HttpResultCodeEnum.SUCCESS.getValue(),path,"上传成功");
+        return buildResult(HttpResultCodeEnum.SUCCESS.getValue(),sysUploadfile,"上传成功");
     }
 
     /**
@@ -197,11 +208,23 @@ public class PersonController extends BaseController{
      */
     @RequestMapping("/downloadFileToFast")
     public ResponseEntity<byte[]>  downloadFileToFast(@RequestParam("fileName")String  fileName) throws IOException {
-        byte[] bytes = fastDfsUtil.downloadFile(fileName);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "attachment;filename=" + fileName);
-        HttpStatus status = HttpStatus.OK;
-        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers, status);
+//        byte[] bytes = fastDfsUtil.downloadFile(fileName);
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Content-Disposition", "attachment;filename=" + fileName);
+//        HttpStatus status = HttpStatus.OK;
+//        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers, status);
+        ResponseEntity<byte[]> responseEntity = null;
         return responseEntity;
+    }
+
+    /**
+     *根据userID获取头像
+     * @param
+     * @return
+     */
+    @RequestMapping(value = "/getPhotoByUserID",method = RequestMethod.POST)
+    public Object getPhotoByUserID(@RequestParam(value = "userId") String userId) {
+        Map map = secUserService.getPhotoByUserID(userId);
+        return buildResult(HttpResultCodeEnum.SUCCESS.getValue(),JSONObject.toJSON(map),"");
     }
 }

@@ -9,6 +9,7 @@ import com.example.base.sys.entity.BsPerson;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BsPersonMapper extends BaseMapper<BsPerson>{
 
@@ -47,4 +48,6 @@ public interface BsPersonMapper extends BaseMapper<BsPerson>{
      * 注意：多参数时必须加@Param注解
      */
     IPage<BsPerson> selectPageVoMybaties(Page page,@Param("bsPerson") BsPerson bsPerson);
+
+
 }

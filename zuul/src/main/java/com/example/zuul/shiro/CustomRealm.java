@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -53,12 +54,12 @@ public class CustomRealm extends AuthorizingRealm {
             LOGGER.warn("用户名不能为空");
             throw new AccountException("用户名不能为空");
         }
-
         SecUser user = null;
         try {
             QueryWrapper queryWrapper = new QueryWrapper();
             queryWrapper.eq("username",username);
-            user = loginService.getOne(queryWrapper);
+            user = loginService.findByName(queryWrapper);
+            LOGGER.info(user.toString());
         } catch(Exception ex) {
             LOGGER.warn("获取用户失败\n" + ex.getMessage());
         }

@@ -1,6 +1,9 @@
 package com.example.zuul.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.base.sys.config.HttpResultCodeEnum;
+import com.example.base.sys.entity.SecUser;
+import com.example.zuul.shiro.ShiroPrincipal;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -10,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class LoginController extends BaseController{
@@ -41,8 +42,9 @@ public class LoginController extends BaseController{
         }
         if (subject.isAuthenticated()) {
             String sid = (String) subject.getSession().getId();
-//            String s = (String) SecurityUtils.getSubject().getPrincipal();
-            return buildLoginSuccessResult(sid,"登录成功");
+            ShiroPrincipal s = (ShiroPrincipal) SecurityUtils.getSubject().getPrincipal();
+            SecUser secUser = s.getUser();
+            return buildLoginSuccessResult(sid, JSONObject.toJSON(secUser),"登录成功");
         } else {
             token.clear();
             return buildResult(HttpResultCodeEnum.ERROR.getValue(),"登录失败","登录失败");

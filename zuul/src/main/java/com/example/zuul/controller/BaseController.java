@@ -42,7 +42,7 @@ public class BaseController {
      * @param result
      * @return
      */
-    protected Object buildLoginSuccessResult(String sid,Object result) {
+    protected Object buildLoginSuccessResult(String sid,Object result,String msg) {
         return buildResult(HttpResultCodeEnum.SUCCESS.getValue(),result,sid);
     }
 
