@@ -2,6 +2,7 @@ package com.example.person.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.base.controller.BaseController;
 import com.example.base.sys.entity.BsOrg;
 import com.example.base.sys.entity.BsPerson;
 import com.example.person.service.OrgService;
@@ -19,7 +20,7 @@ import java.util.List;
 @EnableEurekaClient
 @RestController
 @RequestMapping("/org")
-public class OrgController extends BaseController{
+public class OrgController extends BaseController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrgController.class);
 

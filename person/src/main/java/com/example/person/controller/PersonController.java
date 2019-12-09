@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.base.controller.BaseController;
 import com.example.base.service.SysUploadService;
 import com.example.base.sys.config.HttpResultCodeEnum;
 import com.example.base.sys.entity.BsPerson;
@@ -47,7 +48,7 @@ import java.util.Map;
 @EnableEurekaClient
 @RestController
 @RequestMapping("/person")
-public class PersonController extends BaseController{
+public class PersonController extends BaseController {
     private static final Logger LOGGER = LoggerFactory.getLogger(PersonController.class);
     @Autowired
     public BsPersonService bsPersonService;
