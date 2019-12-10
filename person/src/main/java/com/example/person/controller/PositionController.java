@@ -2,6 +2,7 @@ package com.example.person.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.base.controller.BaseController;
 import com.example.base.sys.entity.BsJobLevel;
 import com.example.person.service.IBsJobLevelService;
 import org.springframework.beans.factory.annotation.Autowired;
