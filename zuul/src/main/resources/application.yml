@@ -21,6 +21,7 @@ eureka:
 zuul:
   routes:
     service-person: /person/**
+    service-entry: /entry/**
   ignored-services: '*'
   host:
     connect-timeout-millis: 60000

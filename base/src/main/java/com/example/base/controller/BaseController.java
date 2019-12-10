@@ -1,4 +1,4 @@
-package com.example.person.controller;
+package com.example.base.controller;
 
 
 import com.alibaba.fastjson.JSONObject;

@@ -1,6 +1,7 @@
 package com.example.person.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.base.controller.BaseController;
 import com.example.base.sys.entity.SysTenant;
 import com.example.person.service.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableEurekaClient
 @RestController
 @RequestMapping("/tenant")
-public class TenantController extends BaseController{
+public class TenantController extends BaseController {
 
     @Autowired
     private TenantService tenantService;
