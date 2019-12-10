@@ -41,9 +41,9 @@ public class CodeGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        String projectPath = "F:/SpringCloudTestParent/base";
-        gc.setOutputDir("F:/SpringCloudTestParent/base/src/main/java");
-        gc.setAuthor("luyang");
+        String projectPath = "D:\\0springCloud\\base";
+        gc.setOutputDir("D:/0springCloud/base/src/main/java");
+        gc.setAuthor("hyf");
         gc.setOpen(false);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
         mpg.setGlobalConfig(gc);
