@@ -29,7 +29,7 @@ public class SysUploadfile implements Serializable {
     /**
      * 显示文件名
      */
-    private String filename;
+    private String filename;        
 
     /**
      * 保存到服务器的文件名
