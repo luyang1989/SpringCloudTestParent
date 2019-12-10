@@ -222,5 +222,7 @@ public class BsPerson extends Model<BsPerson> implements Serializable{
 
     private String def25;
 
+    private String def26;
+
 
 }
