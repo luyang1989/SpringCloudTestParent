@@ -80,7 +80,5 @@ public class BsOrg implements Serializable {
 
     private String begindate;
 
-    private String def1;
-
 
 }
